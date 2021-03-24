@@ -22,7 +22,7 @@ Now start minikube:
 minikube start
 ```
 
-Clone kfserving:
+Clone and install kfserving:
 ```
 git clone https://github.com/kubeflow/kfserving.git
 
