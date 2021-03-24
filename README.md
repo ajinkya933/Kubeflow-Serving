@@ -19,7 +19,7 @@ minikube config set cpus 4
 Now start minikube:
 
 ```
-minikube starthttps://github.com/kubeflow/kfserving.git
+minikube start
 ```
 
 Clone kfserving:
