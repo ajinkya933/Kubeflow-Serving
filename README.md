@@ -34,6 +34,20 @@ sometimes this install fails . Retry installing... sometimes dependencies are no
 
 As we are deploying on laptop we follow below steps (if you are deploying on cloud refer here: https://github.com/kubeflow/kfserving#determine-the-ingress-ip-and-ports   )
 
+
+```
+kubectl apply -f pytorch.yaml
+```
+
+After applying yaml I see this:
+
+```
+$ kubectl get inferenceservice
+
+NAME              URL                                          READY   PREV   LATEST   PREVROLLEDOUTREVISION   LATESTREADYREVISION                       AGE
+pytorch-cifar10   http://pytorch-cifar10.default.example.com   True           100                              pytorch-cifar10-predictor-default-ssvd9   4m58s
+```
+
 ```
 INGRESS_GATEWAY_SERVICE=$(kubectl get svc --namespace istio-system --selector="app=istio-ingressgateway" --output jsonpath='{.items[0].metadata.name}')
 kubectl port-forward --namespace istio-system svc/${INGRESS_GATEWAY_SERVICE} 8080:80
