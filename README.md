@@ -30,3 +30,4 @@ cd kfserving
 ./hack/quick_install.sh
 ```
 
+sometimes this install fails . Retry installing sometimes dependencies are not locked in properly from the web.
