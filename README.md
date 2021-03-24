@@ -36,6 +36,7 @@ As we are deploying on laptop we follow below steps (if you are deploying on clo
 
 
 ```
+cd kfserving/docs/samples/v1alpha2/pytorch
 kubectl apply -f pytorch.yaml
 ```
 
