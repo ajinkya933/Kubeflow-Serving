@@ -32,7 +32,7 @@ cd kfserving
 
 sometimes this install fails . Retry installing... sometimes dependencies are not locked in properly from the web.
 
-As we are deploying on laptop we follow below steps (if you are deploying on cloud refer here: https://github.com/kubeflow/kfserving#determine-the-ingress-ip-and-ports   )
+As we are deploying on laptop we follow below steps (if you are deploying on cloud refer here: https://github.com/kubeflow/kfserving#determine-the-ingress-ip-and-ports   and here https://gist.github.com/ajinkya933/72a0f157b994efdef5f34a27bd386c91)
 
 
 ```
