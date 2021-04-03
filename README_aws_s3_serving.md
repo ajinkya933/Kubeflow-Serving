@@ -23,7 +23,13 @@ secrets:
 ```
 
 
-`kubectl apply -f s3_secret.yaml`
+```
+$ kubectl apply -f s3_secret.yaml
+
+secret/mysecret configured
+serviceaccount/sa configured
+```
+
 
 
 
@@ -45,3 +51,10 @@ spec:
 
 
 ```
+
+```
+$ kubectl apply -f pytorch_serve.yaml
+inferenceservice.serving.kubeflow.org/pytorch-s3-cifar10-005 created
+```
+
+
