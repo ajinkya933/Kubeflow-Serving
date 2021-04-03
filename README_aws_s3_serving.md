@@ -23,6 +23,8 @@ secrets:
 ```
 
 
+`kubectl apply -f s3_secret.yaml`
+
 
 
 You then set the serviceAccountName on the KFService 
