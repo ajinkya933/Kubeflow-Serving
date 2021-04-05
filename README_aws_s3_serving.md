@@ -58,3 +58,5 @@ inferenceservice.serving.kubeflow.org/pytorch-s3-cifar10-005 created
 ```
 
 
+Issue tracked here:
+https://github.com/kubeflow/kfserving/issues/1519
