@@ -5,21 +5,22 @@ s3_secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: mysecret
+  name: kfsecret
   annotations:
-     serving.kubeflow.org/s3-endpoint: s3://kfserving-samples/models/pytorch/cifar10 # replace with your s3 endpoint
+     serving.kubeflow.org/s3-endpoint: s3.amazonaws.com 
      serving.kubeflow.org/s3-usehttps: "1" # by default 1, for testing with minio you need to set to 0
+     serving.kubeflow.org/s3-region: "us-east-2"
 type: Opaque
-data:
-  AWS_ACCESS_KEY_ID: bWluaW8=
-  AWS_SECRET_ACCESS_KEY: bWluaW8xMjM=
+stringData:
+  AWS_ACCESS_KEY_ID: xxx
+  AWS_SECRET_ACCESS_KEY: xxxx
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: sa
+  name: servicesa
 secrets:
-  - name: mysecret
+  - name: kfsecret
 ```
 
 
@@ -41,20 +42,26 @@ pytorch_serve.yaml
 apiVersion: "serving.kubeflow.org/v1alpha2"
 kind: "InferenceService"
 metadata:
-  name: "pytorch-s3-cifar10-005"
+  name: "s3-test-004"
 spec:
   default:
     predictor:
-      serviceAccountName: sa
-      tensorflow:
-        storageUri: "s3://kfserving-samples/models/pytorch/cifar10"
+      serviceAccountName: servicesa
+      pytorch:
+        storageUri: "s3://kfserving-samples/models/pytorch/cifar10/3"
+        modelClassName: "Net"
+
 
 
 ```
 
 ```
 $ kubectl apply -f pytorch_serve.yaml
-inferenceservice.serving.kubeflow.org/pytorch-s3-cifar10-005 created
+inferenceservice.serving.kubeflow.org/s3-test-004 unchanged
+
+$ kubectl get inferenceserviceNAME          URL                                      READY   DEFAULT TRAFFIC   CANARY TRAFFIC   AGE
+s3-test-004   http://s3-test-004.default.example.com   True    100                                2m4s
+
 ```
 
 
